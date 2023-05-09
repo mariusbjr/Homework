@@ -68,7 +68,7 @@ public class OrderBook {
     bids.stream()
         .filter(bid -> bid.getSize() > 0) // safety check
         .filter(
-            bid -> bid.getPrice() == sellOrder.getPrice() || bid.getPrice() > sellOrder.getPrice())
+            bid -> bid.getPrice() >= sellOrder.getPrice())
         .forEachOrdered(
             bid -> {
               log.debug(
